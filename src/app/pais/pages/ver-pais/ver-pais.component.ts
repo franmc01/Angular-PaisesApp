@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { PaisService } from '../../services/pais.service';
 import { Pais } from '../../models/pais.model';
-import { switchMap } from 'rxjs/operators';
+import { switchMap, tap } from 'rxjs/operators';
 switchMap
 
 @Component({
@@ -12,13 +12,12 @@ switchMap
 })
 export class VerPaisComponent implements OnInit {
 
-  constructor(
-    private activatedRoute: ActivatedRoute,
-    private paisService: PaisService
-  ) { }
+  pais!: Pais;
+  constructor(private activatedRoute: ActivatedRoute, private paisService: PaisService) { }
 
 
   //SwitchMap = es un operador de RXJS que permite recibir un observable y retornar otro observable
+  //Tap = es un operador de RXJS que dispara un efecto secundario
   ngOnInit(): void {
     // this.activatedRoute.params.subscribe(({ id }) => {
     //   this.paisService.buscarPaisPorCodigo(id).subscribe(pais => {
@@ -27,11 +26,10 @@ export class VerPaisComponent implements OnInit {
     // });
 
     this.activatedRoute.params.pipe(
-      switchMap(
-        (parametroURL=> this.paisService.buscarPaisPorCodigo(parametroURL.id))
-      )
-    ).subscribe(pais=>{
-      console.log(pais);
+      switchMap((parametroURL => this.paisService.buscarPaisPorCodigo(parametroURL.id))),
+      tap(paisT=>console.log(paisT))
+    ).subscribe(pais => {
+      this.pais = pais;
     })
   }
 
