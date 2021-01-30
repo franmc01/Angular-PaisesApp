@@ -1,4 +1,6 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { PaisService } from '../../services/pais.service';
 
 @Component({
   selector: 'app-por-pais',
@@ -7,9 +9,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PorPaisComponent implements OnInit {
 
-  constructor() { }
+  hayError:boolean = false;
+  term:string = '';
+  constructor(private paisService: PaisService) { }
 
   ngOnInit(): void {
+  }
+
+  BuscarService(termino: string) {
+    this.hayError=false;
+    this.term = termino;
+    this.paisService.buscarPorPais(termino).subscribe((resp) => {
+      console.log(resp);
+    }, (error) => {
+      this.hayError=true;
+    })
   }
 
 }

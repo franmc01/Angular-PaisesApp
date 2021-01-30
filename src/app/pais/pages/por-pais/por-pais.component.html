@@ -1,8 +1,8 @@
 <h3>Por País</h3>
 <hr>
-<app-search></app-search>
+<app-search (propagar)="BuscarService($event)"></app-search>
 <hr>
-<div class="alert alert-info">
-No se encontró nada con el termino [class]="expression"
+<div class="alert alert-danger" *ngIf="hayError">
+No se encontró nada con el termino "{{ term }}"
 </div>
-<app-table-info></app-table-info>
+<app-table-info *ngIf="!hayError"></app-table-info>
