@@ -8,8 +8,13 @@
                 'btn-primary': regionActiva === region,
                 'btn-outline-primary': regionActiva !== region
             }"-->
-    <button *ngFor="let item of regiones" class="btn btn-outline-primary" (click)="consultarRegion(item)">
-      {{ item }}
+    <button *ngFor="let item of regiones"
+            [class]="aplicarClaseCondicional(item)"
+            (click)="consultarRegion(item)">
+
+            {{ item |titlecase }}
     </button>
   </div>
+
+  <app-table-info *ngIf="paises.length > 0" [listapaises]="paises"></app-table-info>
 </div>
