@@ -29,4 +29,9 @@ export class PorPaisComponent implements OnInit {
     })
   }
 
+  mostrarSugerencias(termino:string){
+    this.hayError = false;
+    //TODO: Mostrar sugerencias
+  }
+
 }
