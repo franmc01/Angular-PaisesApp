@@ -11,13 +11,13 @@
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>1</td>
-          <td>bandera</td>
-          <td>Ecuador</td>
-          <td>150000000</td>
+        <tr *ngFor="let item of listapaises; let i = index">
+          <td>{{ i +1 }}</td>
+          <td><img [src]="item.flag" height="35px" width="50px"></td>
+          <td>{{ item.name }}</td>
+          <td>{{ item.population | number }}</td>
           <td>
-            <a href="/pais/ec">
+            <a [routerLink]="['/pais', item.alpha2Code]">
               Ver más info
             </a>
           </td>

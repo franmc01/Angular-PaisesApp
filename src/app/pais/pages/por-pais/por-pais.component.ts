@@ -11,6 +11,7 @@ export class PorPaisComponent implements OnInit {
 
   hayError:boolean = false;
   term:string = '';
+  paises:Pais[]=[];
   constructor(private paisService: PaisService) { }
 
   ngOnInit(): void {
@@ -20,9 +21,10 @@ export class PorPaisComponent implements OnInit {
     this.hayError=false;
     this.term = termino;
     this.paisService.buscarPorPais(termino).subscribe((resp) => {
-      console.log(resp);
+      this.paises =resp;
     }, (error) => {
       this.hayError=true;
+      this.paises = [];
     })
   }
 
