@@ -1,6 +1,6 @@
 <h3>Por País</h3>
 <hr>
-<app-search (propagar)="BuscarService($event)" (onDebounce)="mostrarSugerencias($event)"></app-search>
+<app-search (propagar)="BuscarService($event)" (onDebounce)="mostrarSugerencias($event)" [placeText]="placeholder"></app-search>
 <hr>
 <div class="alert alert-danger" *ngIf="hayError">
 No se encontró nada con el termino "{{ term }}"

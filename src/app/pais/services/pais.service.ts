@@ -13,7 +13,11 @@ export class PaisService {
 
   buscarPorPais(termino:string){
     const url = `${this.apiUrl}/name/${termino}`;
-    console.log(url);
+    return this.http.get<Pais[]>(url);
+  }
+
+  buscarPorCapital(termino:string){
+    const url = `${this.apiUrl}/capital/${termino}`;
     return this.http.get<Pais[]>(url);
   }
 }

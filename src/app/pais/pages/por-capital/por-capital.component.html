@@ -1,1 +1,9 @@
-<p>por-capital works!</p>
+<h3>Por Capital</h3>
+<hr>
+<!-- (onDebounce)="mostrarSugerencias($event)" -->
+<app-search (propagar)="BuscarService($event)" [placeText]="placeholder"></app-search>
+<hr>
+<div class="alert alert-danger" *ngIf="hayError">
+No se encontró ningun pais con el termino "{{ term }}"
+</div>
+<app-table-info *ngIf="paises.length > 0" [listapaises]="paises"></app-table-info>

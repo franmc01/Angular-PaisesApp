@@ -13,6 +13,7 @@ export class PorPaisComponent implements OnInit {
   hayError:boolean = false;
   term:string = '';
   paises:Pais[]=[];
+  placeholder = 'Ingrese el nombre del pais que desea buscar...';
   constructor(private paisService: PaisService) { }
 
   ngOnInit(): void {
