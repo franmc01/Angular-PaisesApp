@@ -1,6 +1,7 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { PaisService } from '../../services/pais.service';
+import { Pais } from '../../models/pais.model';
 
 @Component({
   selector: 'app-por-pais',

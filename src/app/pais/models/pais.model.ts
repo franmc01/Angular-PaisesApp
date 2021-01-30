@@ -1,4 +1,4 @@
-interface Pais {
+export interface Pais {
   name: string;
   topLevelDomain: string[];
   alpha2Code: string;

@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Pais } from '../../pais/models/pais.model';
 
 @Component({
   selector: 'app-table-info',
