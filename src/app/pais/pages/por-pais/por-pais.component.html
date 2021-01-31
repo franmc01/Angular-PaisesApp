@@ -1,8 +1,25 @@
 <h3>Por País</h3>
 <hr>
-<app-search (propagar)="BuscarService($event)" (onDebounce)="mostrarSugerencias($event)" [placeText]="placeholder"></app-search>
+
+<app-search (propagar)="BuscarService($event)" (onDebounce)="mostrarSugerencias($event)" [placeText]="placeholder">
+</app-search>
+
+<ul class="list-group" *ngIf="mostraSuge">
+  <li class="list-group-item list-group-item-action" *ngFor="let item of paisesSugeridos">
+    <a class="nav-link" [routerLink]="['/pais', item.alpha2Code]">
+      {{ item.name }}
+    </a>
+  </li>
+  <li class="list-group-item list-group-item-action">
+    <a class="nav-link" (click)="buscarSugerido(term)">
+      Buscar '{{ term }}'
+    </a>
+  </li>
+</ul>
+
 <hr>
 <div class="alert alert-danger" *ngIf="hayError">
-No se encontró nada con el termino "{{ term }}"
+  No se encontró nada con el termino "{{ term }}"
 </div>
-<app-table-info *ngIf="paises.length > 0" [listapaises]="paises"></app-table-info>
+
+<app-table-info *ngIf="paises.length > 0" [listapaises]="paises"> </app-table-info>
